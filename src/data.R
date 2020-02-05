@@ -83,6 +83,7 @@ for (j in 1:4) {
 
 seoul_pm <- pm25 %>%
     right_join(kma, by = c("Year", "Month", "Day")) %>%
-    right_join(bpm, by = c("Year", "Month", "Day"), suffix = c(".seoul", "beijing"))
+    right_join(bpm, by = c("Year", "Month", "Day"), suffix = c(".seoul", ".beijing"))
 
+write.csv(seoul_pm, file = "data/seoul/seoul.csv")
 save(list = c("seoul_pm"), file = "data/seoul/seoul.Rdata")
