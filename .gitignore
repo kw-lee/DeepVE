@@ -1,0 +1,6 @@
+# copyrights
+data/
+refs/
+
+# aux file
+*.code-workspace
