@@ -4,3 +4,4 @@ refs/
 
 # aux file
 *.code-workspace
+*DS_Store
