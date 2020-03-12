@@ -47,3 +47,8 @@ def log_lgaussian_loss(output, target, sigma, no_dim):
     log_target = torch.log(target)
     return (-log_out.mean()
             - log_gaussian_loss(log_out, log_target, sigma, no_dim))
+
+
+# todo: define function which generate loss
+def log_likelihood():
+    return 0

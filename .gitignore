@@ -5,3 +5,5 @@ refs/
 # aux file
 *.code-workspace
 *DS_Store
+__pycache__
+*.ipynb_checkpoints
