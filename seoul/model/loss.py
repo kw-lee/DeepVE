@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import functools
 
 
 def log_gaussian_loss(output, target, sigma, no_dim):
@@ -50,5 +51,12 @@ def log_lgaussian_loss(output, target, sigma, no_dim):
 
 
 # todo: define function which generate loss
-def log_likelihood():
-    return 0
+def log_likelihood(likelihood, **kwargs):
+    if (likelihood == "gaussian"):
+        return functools.partial(log_gaussian_loss, **kwargs)
+    elif (likelihood == "laplace"):
+        return functools.partial(log_laplace_loss, **kwargs)
+    elif (likelihood == "t"):
+        return functools.partial(log_t_loss, **kwargs)
+    else:
+        return 0

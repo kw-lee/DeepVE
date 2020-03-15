@@ -27,6 +27,18 @@ class HeteroModel(nn.Module):
         out = torch.cat((mean_x, sd_x), 1)
         return out
 
+    def pred(self, newx):
+        """
+        prediction at newx
+        output: means and stds
+        """
+        self.eval()
+        out = self(newx)
+        means = out[:, 0]
+        stds = torch.exp(out[:, 1])
+        self.train()
+        return (means, stds)
+
 
 class HomoModel(nn.Module):
     def __init__(self, input_dim, output_dim, num_units):
@@ -51,3 +63,15 @@ class HomoModel(nn.Module):
         x = self.activation(x)
         x = self.layer2(x)
         return x
+
+    def pred(self, newx):
+        """
+        prediction at newx
+        output: means and stds
+        """
+        self.eval()
+        out = self(newx)
+        means = out[:, 0]
+        stds = torch.exp(self.log_sigma).repeat(means.shape[0])
+        self.train()
+        return (means, stds)

@@ -14,8 +14,3 @@ def to_device(*args, cuda=True):
             x = x.cuda()
         var.append(x)
     return var
-
-
-# todo: define plot function (homo vs hetero => isinstance)
-def plot_model():
-    return 0
