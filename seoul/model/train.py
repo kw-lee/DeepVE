@@ -6,7 +6,8 @@ import torch
 # train_homo
 def train_homo(model, x_train, y_train, num_epochs,
                optimizer, loss_func,
-               device=torch.device('cpu')):
+               device=torch.device('cpu'),
+               check=False):
     output_dim = model.output_dim
     if not (output_dim == y_train.shape[1]):
         raise ValueError
@@ -23,14 +24,14 @@ def train_homo(model, x_train, y_train, num_epochs,
         loss_homo.backward()
         optimizer.step()
 
-        if i % (num_epochs/5) == 0:
+        if (i % (num_epochs/5) == 0) & check:
             print("\nEpoch: {:4d}, Train loss = {:7.3f}".format(
                 i, loss_homo.cpu().data.numpy()))
 
 
-# todo: `train_hetero`
 def train_hetero(model, x_train, y_train, num_epochs,
-                 optimizer, loss_func, device=torch.device('cpu')):
+                 optimizer, loss_func, device=torch.device('cpu'),
+                 check=False):
     output_dim = model.output_dim
     if not (output_dim == y_train.shape[1]):
         raise ValueError
@@ -48,6 +49,6 @@ def train_hetero(model, x_train, y_train, num_epochs,
         loss_hetero.backward()
         optimizer.step()
 
-        if i % (num_epochs/5) == 0:
+        if (i % (num_epochs/5) == 0) & check:
             print("\nEpoch: {:4d}, Train loss = {:7.3f}".format(
                 i, loss_hetero.cpu().data.numpy()))

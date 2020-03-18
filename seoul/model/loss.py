@@ -34,7 +34,7 @@ def log_t_loss(output, target, sigma, no_dim, df=1.0):
     exponent = -(df+1)*0.5*(1 + stand_out**2/df_torch)
     nlog_coeff = no_dim*(0.5*torch.log(torch.tensor(df_torch*np.pi))
                          + torch.log(sigma)
-                         + torch.lgamma(df_torch/2) 
+                         + torch.lgamma(df_torch/2)
                          - torch.lgamma((df_torch+1)/2))
     return (-exponent + nlog_coeff).mean()
 
@@ -50,7 +50,6 @@ def log_lgaussian_loss(output, target, sigma, no_dim):
             - log_gaussian_loss(log_out, log_target, sigma, no_dim))
 
 
-# todo: define function which generate loss
 def log_likelihood(likelihood, **kwargs):
     if (likelihood == "gaussian"):
         return functools.partial(log_gaussian_loss, **kwargs)

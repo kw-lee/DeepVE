@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/kwlee/anaconda3/envs/pytorch/bin/python",
+    "python.pythonPath": "/Users/kwlee/anaconda3/envs/deepve/bin/python",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true
