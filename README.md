@@ -1,11 +1,19 @@
 # Variance Estimation using Deep Learning
 
+## Model
+
+* Nix 1994의 MVE(Mean and Variance Estimation) 방법을 미세먼지 자료에 적용
+* 다양한 통계적 모형을 자동적으로 찾는 모형 (degree of freedom 등)
+
 ## To Do
 
 * 소스코드 정리
 * confidence interval이 실제로 맞나 확인하기 위해 이론적 모형 
   $$y = f(\mathbf{x}) + \epsilon, \quad \epsilon \sim D(0, \sigma(\mathbf{x}))$$
   에서 데이터를 생성하고, 여러 번의 신뢰구간 추정을 통해 실제로 추정이 가능한 지, 아닌 지를 확인
+* 자유도, moment matching등을 통해 임의의 모형을 적합할 수 있는 방법에 대해 고민
+* 베이즈 딥러닝을 도입해 다양한 종류의 uncertainty를 계산
+* 이론적 성질 규명 (Gaussian Process와의 연관성)
 
 ## Example - PM25 Datasets
 
@@ -65,7 +73,14 @@
 * measure: MSE
 * confidence interval: proportion (ratio)
 
-## To Do
+### To Do
 
 * *기울임체*로 작성한 부분들 구현
 * 최근 자료 사용 (2019년 관련 자료 이용)
+
+## References
+
+* Nix, D.A., and A.S. Weigend. “Estimating the Mean and Variance of the Target Probability Distribution.
+* Damianou, Andreas C., and Neil D. Lawrence. “Deep Gaussian Processes.” In Artificial Intelligence and Statistics, 207–15, 2013. http://arxiv.org/abs/1211.0358.” In Proceedings of 1994 IEEE International Conference on Neural Networks (ICNN’94), 55–60 vol.1. Orlando, FL, USA: IEEE, 1994. https://doi.org/10.1109/ICNN.1994.374138.
+* Gal, Yarin, and Zoubin Ghahramani. “Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning” 48 (2015). https://doi.org/10.1109/TKDE.2015.2507132.
+* Gal, Yarin. “Uncertainty in Deep Learning.” PhD Thesis, University of Cambridge, no. September (2016). https://doi.org/10.1371/journal.pcbi.1005062.
